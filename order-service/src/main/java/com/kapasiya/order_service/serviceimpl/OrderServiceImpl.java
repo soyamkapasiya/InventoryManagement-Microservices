@@ -1,9 +1,10 @@
 package com.kapasiya.order_service.serviceimpl;
 
-import com.kapasiya.order_service.dto.request.OrderRequestDto;
+import com.kapasiya.order_service.dto.request.OrderRequest;
 import com.kapasiya.order_service.dto.response.CustomResponseDto;
 import com.kapasiya.order_service.dto.response.OrderResponseDto;
 import com.kapasiya.order_service.entities.Order;
+import com.kapasiya.order_service.entities.OrderLineItems;
 import com.kapasiya.order_service.exceptions.custom.OrderException;
 import com.kapasiya.order_service.mapper.OrderMapper;
 import com.kapasiya.order_service.repository.OrderRepository;
@@ -25,12 +26,17 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public CustomResponseDto<Void> createOrder(OrderRequestDto requestDto){
+    public CustomResponseDto<Void> createOrder(OrderRequest requestDto){
         log.info("Creating Order With Request: {}",requestDto);
         try{
-            Order order = OrderMapper.toEntity(requestDto);
-            Long orderId = orderRepository.save(order).getId();
-            log.info("Order Created With Id: {}",orderId);
+            Order order = OrderMapper.toEntity();
+            List<OrderLineItems> list = requestDto.getList()
+                    .stream()
+                    .map(OrderMapper::mapDto)
+                    .toList();
+            order.setOrderLineItems(list);
+            orderRepository.save(order);
+            log.info("Order Created With Id: {}","order-line-items");
             return ResponseUtil.successMessageResponse(HttpStatus.CREATED,
                     "Order Created Successfully...");
         }catch (OrderException ox){

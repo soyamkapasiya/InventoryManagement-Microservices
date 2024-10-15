@@ -25,4 +25,8 @@ public class OrderLineItems {
     @DecimalMin(value = "0.0", inclusive = true, message = "Price must be greater than or equal to zero")
     private BigDecimal price;
     private Integer quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private Order order;
 }

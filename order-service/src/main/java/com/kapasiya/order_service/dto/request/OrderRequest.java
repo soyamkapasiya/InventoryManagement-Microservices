@@ -1,5 +1,6 @@
 package com.kapasiya.order_service.dto.request;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,7 +13,8 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderRequestDto {
-    @NotNull
-    private List<OrderLineItemRequestDto> orderLineItems;
+public class OrderRequest {
+    @NotNull(message = "Order list must not be null")
+    @JsonProperty("orderLineItems")
+    private List<OrderLineItemDto> list;
 }

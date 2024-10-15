@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderLineItemRequestDto {
+public class OrderLineItemDto {
     private String skuCode;
     @NotNull(message = "Price must not be null")
     @DecimalMin(value = "0.0", inclusive = true, message = "Price must be greater than or equal to zero")
