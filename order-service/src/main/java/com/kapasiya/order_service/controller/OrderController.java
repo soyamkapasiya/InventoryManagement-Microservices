@@ -1,6 +1,6 @@
 package com.kapasiya.order_service.controller;
 
-import com.kapasiya.order_service.dto.request.OrderRequestDto;
+import com.kapasiya.order_service.dto.request.OrderRequest;
 import com.kapasiya.order_service.dto.response.CustomResponseDto;
 import com.kapasiya.order_service.dto.response.OrderResponseDto;
 import com.kapasiya.order_service.service.OrderService;
@@ -21,7 +21,7 @@ public class OrderController {
 
     @PostMapping
     public ResponseEntity<CustomResponseDto<Void>> createOrder(
-            @Valid @RequestBody OrderRequestDto requestDto){
+            @Valid @RequestBody OrderRequest requestDto){
         return ResponseEntity.ok().body(orderService.createOrder(requestDto));
     }
 
