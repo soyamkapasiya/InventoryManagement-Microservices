@@ -10,7 +10,6 @@ This project is an Inventory Management System built using the Microservice Arch
 - **REST APIs**: Expose endpoints for interacting with the system's services.
 - **JWT Authentication**: Secure access to the APIs using JWT.
 - **Elasticsearch**: For fast searching and indexing of products.
-- **Role-Based Authentication**: Different roles for users to manage permissions.
 
 ## Microservices Overview
 1. **Product Service**: Handles product details such as creation, update, and deletion.
@@ -22,12 +21,10 @@ This project is an Inventory Management System built using the Microservice Arch
 - **Spring Boot** (Java)
 - **Spring Cloud** (for microservices management)
 - **MongoDB** (for data storage)
+- **Kibana** (for visualization)
 - **Elasticsearch** (for search functionality)
+- **LogStash** (for Log Monitoring)
 - **Spring Security & JWT** (for authentication)
-- **Docker** (for containerization)
-- **Kubernetes** (for microservice orchestration)
-- **RabbitMQ/Kafka** (for messaging between services)
-- **Prometheus & Grafana** (for monitoring and observability)
 
 ## Prerequisites
 - Java 11+
